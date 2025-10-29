@@ -1,16 +1,28 @@
-# Get book function
+# main
+from stats import get_book
+from stats import num_of_words
+from stats import num_of_char
+from stats import dict_sort
+import sys
 
-def get_book_text(path_to_file):
-    with open(path_to_file) as f:
-        file_contents = f.read()
-        return file_contents
+if len(sys.argv) !=2:
+    print("Usage: python3 main.py <path_to_book>")
+    sys.exit(1)
+else:
+    book_location = sys.argv[1]
 
-def book_splitter(book_text):
-    book_words = book_text.split() 
-    num_words = len(book_words)
-    print (f"Found {num_words} total words")
+
+    
+
+num_char = num_of_char(get_book(book_location))
+book = get_book(book_location)
 
 def main():
-    book_splitter(get_book_text("books/frankenstein.txt"))
+    print("============ BOOKBOT ============")
+    print(f"Analyzing book found at {book_location}")
+    print("----------- Word Count ----------")
+    num_of_words(book)
+    print("--------- Character Count -------")
+    dict_sort(num_char)
 
 main()
